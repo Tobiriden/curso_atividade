@@ -36,8 +36,10 @@ public class ProdutosDAO {
             st.setString(3, produto.getStatus());
             status = st.executeUpdate();
             
-        } catch (SQLException ex) {
-            System.out.println("Erro ao conectar: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+            
+        } catch (SQLException ex) {          
+            JOptionPane.showMessageDialog(null,"falha ao cadastrar");
             
         }
     }
