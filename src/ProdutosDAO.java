@@ -75,7 +75,7 @@ public void venderProduto(int id)
 {
     int status;
         try {
-            
+            conn = new conectaDAO().connectDB();
             st = conn.prepareStatement("UPDATE produtods SET status = ? where id = ?");
             st.setString(1,"Vendido");
             st.setInt(2,id);
@@ -86,6 +86,10 @@ public void venderProduto(int id)
             System.out.println(ex.getErrorCode());
             JOptionPane.showMessageDialog(null,"Falha ao realizar a venda");
         }
+}
+public ArrayList<ProdutosDTO> listarProdutosVendidos()
+{
+    
 }
     
     
