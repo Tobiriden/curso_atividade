@@ -89,7 +89,32 @@ public void venderProduto(int id)
 }
 public ArrayList<ProdutosDTO> listarProdutosVendidos()
 {
-    
+    String sql = "SELECT * FROM produtos where status LIKE ?";
+        
+        try {           
+            conn = new conectaDAO().connectDB();
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1,"%" + "Vendido" + "%");
+            ResultSet rs = stmt.executeQuery();            
+            
+            ArrayList<ProdutosDTO> lista_produtos = new ArrayList<>();
+            
+            while (rs.next()) { 
+                ProdutosDTO produto = new ProdutosDTO();
+                
+                produto.setNome(rs.getString("Nome"));
+                produto.setId(rs.getInt("id"));
+                produto.setStatus(rs.getString("status"));
+                produto.setValor(rs.getInt("valor"));
+                
+                lista_produtos.add(produto);    
+            }           
+            return lista_produtos;
+            
+        } catch (Exception e) {           
+            return null;
+            
+        }
 }
     
     
