@@ -76,7 +76,7 @@ public void venderProduto(int id)
     int status;
         try {
             conn = new conectaDAO().connectDB();
-            st = conn.prepareStatement("UPDATE produtods SET status = ? where id = ?");
+            st = conn.prepareStatement("UPDATE produtos SET status = ? where id = ?");
             st.setString(1,"Vendido");
             st.setInt(2,id);
             status = st.executeUpdate();
